@@ -7,7 +7,6 @@ import uvicorn
 
 from mangum import Mangum
 from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 
@@ -30,7 +29,7 @@ async def get_users_info(tag: str = "v0.1.0") -> Response:
     """
     uri = "".join([url, tag, "/users.json?token=", token])
     req = requests.get(uri)
-    
+
     if req.ok:
         users_info = req.text
         response = Response(users_info=users_info)
@@ -38,6 +37,7 @@ async def get_users_info(tag: str = "v0.1.0") -> Response:
     else:
         raise HTTPException(status_code=400, detail=f"Failed to get user information. See response message-> {req.text}")
 
+handler = Mangum(app=app)
 
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
