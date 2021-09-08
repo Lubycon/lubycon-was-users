@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "lubycon-was-users"
+version = "0.1.0"
+description = "루비콘 사용자들 정보를 조회할 수 있는 백엔드 서비스"
+authors = ["Martin Hwang <dhhwang89@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.68.1"
+uvicorn = "^0.15.0"
+requests = "^2.26.0"
+mangum = "^0.12.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
